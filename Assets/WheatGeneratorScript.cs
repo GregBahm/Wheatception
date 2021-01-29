@@ -8,6 +8,7 @@ public class WheatGeneratorScript : MonoBehaviour
     public Color HighColor;
     public Color LowColor;
     public Color DistanceColor;
+    public Color EffectorColor;
     [Range(0, 1)]
     public float CardWidth;
     [Range(0, 1)]
@@ -136,7 +137,8 @@ public class WheatGeneratorScript : MonoBehaviour
         WheatMat.SetFloat("_CardWidth", CardWidth);
         WheatMat.SetVector("_PlayspaceScale", new Vector2(transform.localScale.x / 2, transform.localScale.z / 2));
         WheatMat.SetVector("_EffectorPos", EffectorSphere.position);
+        WheatMat.SetColor("_EffectorColor", EffectorColor);
         WheatMat.SetPass(0);
-        Graphics.DrawProcedural(MeshTopology.Points, 1, WheatStalks);
+        Graphics.DrawProceduralNow(MeshTopology.Points, 1, WheatStalks);
     }
 }

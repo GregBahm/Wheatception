@@ -5,3 +5,7 @@
 /Wheatception.Plugins.csproj
 /Wheatception.sln
 /.vs/
+/Logs
+/obj
+/Packages
+*.csproj

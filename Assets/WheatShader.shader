@@ -54,6 +54,7 @@
 			float3 _HighColor;
 			float3 _LowColor;
 			float3 _DistanceColor;
+			float3 _EffectorColor;
 
 			float3 _EffectorPos;
 
@@ -110,9 +111,10 @@
 				triStream.Append(o);
 			}
 			
-			fixed4 frag (g2f i) : SV_Target
+			fixed4 frag(g2f i) : SV_Target
 			{
-				float effectorLight = pow(saturate(1 - i.distToEffector / 5), 5);
+				float effectorLightPower = pow(saturate(1 - i.distToEffector / 5), 5);
+				float3 effectorLight = _EffectorColor * effectorLightPower;
 				float quadDistToCenter = 1 - length(i.uvs - .5) * 2;
 				clip(quadDistToCenter - .01);
 				float3 highColor = _HighColor + (_HighColor * i.planeDistToCenter);
